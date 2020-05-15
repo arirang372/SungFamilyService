@@ -36,7 +36,7 @@ public class FirebaseMessageEndpoints
 			User user = gs.fromJson(payload, User.class);
 			MysqlConnect connect = new MysqlConnect(AppMetadata.FORUM_DB);
 	
-			PreparedStatement ps = (PreparedStatement) connect.getConnect().prepareStatement("SELECT * FROM User WHERE Email=?");
+			PreparedStatement ps = (PreparedStatement) connect.getConnect().prepareStatement("SELECT * FROM user WHERE Email=?");
 			ps.setString(1, user.getEmail());
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
@@ -49,7 +49,7 @@ public class FirebaseMessageEndpoints
 				return CustomResponse.serverErrorResponse(response);
 			}
 			
-			ps = (PreparedStatement) connect.getConnect().prepareStatement("UPDATE User Set IsLogin = 1 WHERE Id=?");
+			ps = (PreparedStatement) connect.getConnect().prepareStatement("UPDATE user Set IsLogin = 1 WHERE Id=?");
 			ps.setInt(1, user.getId());
 			int result = ps.executeUpdate();
 			if(result < 0) {
@@ -74,7 +74,7 @@ public class FirebaseMessageEndpoints
 		MysqlConnect connect = new MysqlConnect(AppMetadata.FORUM_DB);
 		try
 		{
-			PreparedStatement ps = (PreparedStatement) connect.getConnect().prepareStatement("SELECT * FROM User WHERE Id=?");
+			PreparedStatement ps = (PreparedStatement) connect.getConnect().prepareStatement("SELECT * FROM user WHERE Id=?");
 			if(userId == 1)
 			{
 				ps.setInt(1, 2);

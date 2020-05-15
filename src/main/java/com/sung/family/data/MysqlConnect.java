@@ -12,6 +12,7 @@ import java.sql.Types;
 import java.util.Properties;
 
 import com.mysql.cj.jdbc.AbandonedConnectionCleanupThread;
+import com.mysql.cj.jdbc.MysqlDataSource;
 
 public class MysqlConnect 
 {
@@ -26,11 +27,10 @@ public class MysqlConnect
     
     public MysqlConnect(String dbName) 
     {
-        String driver = getProperty("SQLDRIVER");
-        String userName = getProperty("SQLUSERNAME");
-        String password = getProperty("SQLPASSWORD");
+        String driver = getProperty("PROD_SQLDRIVER");
+        String userName = getProperty("PROD_SQLUSERNAME");
+        String password = getProperty("PROD_SQLPASSWORD");
     	String url = getProperty(dbName);
-    	
         try 
         {
             Class.forName(driver).newInstance();

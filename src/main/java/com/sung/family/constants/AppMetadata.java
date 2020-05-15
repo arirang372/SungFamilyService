@@ -15,10 +15,12 @@ public class AppMetadata
     public static final String OTC_DRUG_TYPE = "OTC";
     public static final String AUTHORIZATION_HEADER = "AUTHORIZATION";
     
-	private static final String FORUM_DB_PRODUCTION = "FORUM_DB_PRODUCTION";
+	private static final String FORUM_DB_PRODUCTION = "FORUM_DB_PROD";
 	private static final String FORUM_DB_DEV = "FORUM_DB_DEV";
-	public static final String FORUM_DB = FORUM_DB_DEV;
+	public static final String FORUM_DB = FORUM_DB_PRODUCTION;
     
+	
+	
 	public static String getAPIKey()
 	{
 		return getProperty("GCM_APP_API_KEY");
